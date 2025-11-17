@@ -5,99 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مفاجأة لأسامة (أخويا)</title>
     <style>
-        /* التصميم والألوان المناسبة (أزرق مخضر وذهبي) */
-        body { 
-            font-family: 'Arial', sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background-color: #e0f7fa; /* خلفية فاتحة */
-            color: #004d40; /* لون الخط الأساسي */
-            text-align: center; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-        }
-        .page { 
-            width: 100%; 
-            max-width: 600px; 
-            padding: 20px; 
-            box-sizing: border-box; 
-        }
+        /* (نفس الألوان الخضرا والزرقا والذهبي) */
+        body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #e0f7fa; color: #004d40; text-align: center; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .page { width: 100%; max-width: 600px; padding: 20px; box-sizing: border-box; }
+        #password-page { background: #fff; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        input[type="text"] { padding: 10px; margin: 15px 0; border: 2px solid #00796b; border-radius: 8px; width: 80%; }
+        button { background-color: #00796b; color: white; padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-size: 1.1em; transition: background-color 0.3s; }
+        button:hover { background-color: #004d40; }
+        #surprise-page { display: none; }
+        h1 { color: #00796b; margin-bottom: 5px; }
+        .message-box { background: #b2dfdb; padding: 20px; border-radius: 10px; margin-top: 20px; font-size: 1.2em; line-height: 1.6; white-space: pre-line; border: 1px solid #80cbc4; }
+        .memory-image { width: 100%; max-width: 400px; height: auto; border-radius: 10px; margin: 20px auto; border: 4px solid #00796b; box-shadow: 0 0 15px rgba(0, 121, 107, 0.5); }
+        .star { position: absolute; color: #ffd700; font-size: 20px; animation: floatUp 5s infinite ease-out; opacity: 0; pointer-events: none; }
+        @keyframes floatUp { 0% { transform: translateY(0) scale(1); opacity: 1; } 100% { transform: translateY(-500px) scale(0.5); opacity: 0; } }
+        #manual-play-button { background-color: #004d40; margin-bottom: 20px; }
 
-        /* صفحة الباسورد */
-        #password-page { 
-            background: #fff; 
-            border-radius: 15px; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-        }
-        input[type="text"] { 
-            padding: 10px; 
-            margin: 15px 0; 
-            border: 2px solid #00796b; /* لون التحديد */
-            border-radius: 8px; 
-            width: 80%; 
-        }
-        button { 
-            background-color: #00796b; /* لون الزر */
-            color: white; 
-            padding: 12px 25px; 
-            border: none; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            font-size: 1.1em; 
-            transition: background-color 0.3s; 
-        }
-        button:hover { 
-            background-color: #004d40; 
-        }
-
-        /* صفحة المفاجأة */
-        #surprise-page { 
-            display: none; 
-        }
-        h1 { 
-            color: #00796b; /* لون العنوان الرئيسي */
-            margin-bottom: 5px; 
-        }
-        .message-box { 
-            background: #b2dfdb; /* خلفية صندوق الرسالة */
-            padding: 20px; 
-            border-radius: 10px; 
-            margin-top: 20px; 
-            font-size: 1.2em; 
-            line-height: 1.6; 
-            white-space: pre-line;
-            border: 1px solid #80cbc4; 
-        }
-        .memory-image { 
-            width: 100%; 
-            max-width: 400px; 
-            height: auto; 
-            border-radius: 10px; 
-            margin: 20px auto; 
-            border: 4px solid #00796b; 
-            box-shadow: 0 0 15px rgba(0, 121, 107, 0.5); 
-        }
-        
-        /* أنيميشن النجوم */
-        .star { 
-            position: absolute; 
-            color: #ffd700; /* نجوم باللون الذهبي */
-            font-size: 20px; 
-            animation: floatUp 5s infinite ease-out; 
-            opacity: 0; 
-            pointer-events: none; 
-        }
-        @keyframes floatUp { 
-            0% { transform: translateY(0) scale(1); opacity: 1; } 
-            100% { transform: translateY(-500px) scale(0.5); opacity: 0; } 
-        }
+        /* إخفاء مشغل يوتيوب في وضع عدم التشغيل */
+        #youtube-player { display: none; } 
     </style>
 </head>
 <body>
 
-    <audio id="background-music" src="https://cdn.pixabay.com/download/audio/2023/12/28/background-music-200770.mp3" loop autoplay muted></audio>
+    <iframe id="youtube-player" 
+            width="0" height="0" 
+            src="https://www.youtube.com/embed/onMMJ9mhtVA?autoplay=1&mute=1&loop=1&playlist=onMMJ9mhtVA" 
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+    </iframe>
 
 
     <div id="password-page" class="page">
@@ -109,8 +42,10 @@
     <div id="surprise-page" class="page">
         <h1>صاحب العمر والسند ⭐</h1>
         
+        <button id="manual-play-button" onclick="playMusic()">شغل الأغنية</button> 
+        
         <div class="message-box">
-            <p>أسامة يا صاحبي اللي ميتعوضش. كل خروجة، وكل موقف صعب عدينا بيه سوا، بتفكرني إن الصاحب الجدع رزق. عمر الصداقة ما كانت بالكلام، كانت بالوقفة والرجولة. ربنا يخليك ليا ويديم ضحكتنا سوا، أنت الأخويا.</p>
+            <p>يا أخوياا اس اس اللي مفيش منه اتنين، وأجدع أخ وسند في الدنيا دي كلها. أنت مش بس صاحب، أنت العيلة والضهر، وعشرة سنين عمري ما أنساها. أنت ليك مكان خاص في قلبي محدش يقدر ياخده، مكان محفور فيه كل ذكرى حلوة ووقفة جدعنة. ربنا يديمك نعمة، ويديم المحبة اللي بين أنا وأنت طول العمر يا أصيل.</p>
         </div>
 
         <h3>صورة بتفكرنا بأحلى الأيام!</h3>
@@ -121,33 +56,32 @@
     </div>
     
     <script>
-        // ** كلمة السر المضمونة **
         const CORRECT_PASSWORD = "AKHOYA"; 
         
-        // دالة فك كتم الصوت وتشغيل الموسيقى
+        // دالة تشغيل الأغنية (هتشتغل لما يدوس على زر التشغيل اليدوي)
         function playMusic() {
-            const music = document.getElementById('background-music');
-            music.muted = false; 
-            music.play().catch(e => console.log("Music auto-play block")); // للتعامل مع حظر المتصفحات
+            const player = document.getElementById('youtube-player');
+            // تغيير مصدر الفيديو لإضافة خاصية "فك كتم الصوت" وضمان التشغيل بعد تفاعل المستخدم
+            player.src = "https://www.youtube.com/embed/onMMJ9mhtVA?autoplay=1&mute=0&loop=1&playlist=onMMJ9mhtVA";
+            
+            // إخفاء الزر بعد الضغط عليه
+            document.getElementById('manual-play-button').style.display = 'none';
         }
         
-        // دالة فحص كلمة السر
         function checkPassword() {
-            // تحويل المدخل إلى حروف كبيرة للمقارنة
             const passwordInput = document.getElementById('password').value.toUpperCase(); 
             
             if (passwordInput === CORRECT_PASSWORD) {
                 document.getElementById('password-page').style.display = 'none';
                 document.getElementById('surprise-page').style.display = 'block';
                 
-                playMusic(); 
+                // في هذه المرة لن يتم استدعاء playMusic هنا، بل سيتم تركها للزر اليدوي
                 startStarAnimation(); 
             } else {
                 alert('كلمة السر غلط يا أسامة، ركز شوية!');
             }
         }
 
-        // دالة حركة النجوم
         function startStarAnimation() {
             const container = document.body;
             setInterval(() => {
