@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مفاجأة لأسامة (اختبار)</title>
+    <title>مفاجأة لأسامة ❤️</title>
     <style>
         /* (نفس الألوان الخضرا والزرقا) */
         body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #e0f7fa; color: #004d40; text-align: center; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
@@ -21,6 +21,9 @@
 </head>
 <body>
 
+    <audio id="background-music" src="https://cdn.pixabay.com/download/audio/2023/12/28/background-music-200770.mp3" loop autoplay muted></audio>
+
+
     <div id="password-page" class="page">
         <h2>عشان تشوف المفاجأة يا أسامة، لازم تكتب كلمة السر!</h2>
         <input type="text" id="password" placeholder="أكتب كلمة السر الخاصة بينا..." required>
@@ -37,19 +40,24 @@
     </div>
     
     <script>
-        // الكود هنا بسيط جداً ومفيهوش يوتيوب
-
         const CORRECT_PASSWORD = "AKHOYA"; 
-
+        
+        function playMusic() {
+            const music = document.getElementById('background-music');
+            music.muted = false; // فك كتم الصوت
+            music.play().catch(e => console.log("مشكلة في تشغيل الأغنية التلقائي"));
+        }
+        
         function checkPassword() {
             const passwordInput = document.getElementById('password').value.toUpperCase(); 
             
             if (passwordInput === CORRECT_PASSWORD) {
                 document.getElementById('password-page').style.display = 'none';
                 document.getElementById('surprise-page').style.display = 'block';
+                
+                playMusic(); // تشغيل الأغنية وفك كتم الصوت
                 startStarAnimation(); 
             } else {
-                // الكود ده لازم يشتغل لو الباسورد غلط
                 alert('كلمة السر غلط يا أسامة، ركز شوية!');
             }
         }
