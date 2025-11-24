@@ -3,22 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مفاجأة لأسامة (أخويا)</title>
+    <title>عيد ميلاد أغلى أخ (حُسام) 🎂</title>
     <style>
-        /* (نفس الألوان الخضرا والزرقا والذهبي) */
-        body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #e0f7fa; color: #004d40; text-align: center; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .page { width: 100%; max-width: 600px; padding: 20px; box-sizing: border-box; }
-        #password-page { background: #fff; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
-        input[type="text"] { padding: 10px; margin: 15px 0; border: 2px solid #00796b; border-radius: 8px; width: 80%; }
-        button { background-color: #00796b; color: white; padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-size: 1.1em; transition: background-color 0.3s; }
-        button:hover { background-color: #004d40; }
-        #surprise-page { display: none; }
-        h1 { color: #00796b; margin-bottom: 5px; }
-        .message-box { background: #b2dfdb; padding: 20px; border-radius: 10px; margin-top: 20px; font-size: 1.2em; line-height: 1.6; white-space: pre-line; border: 1px solid #80cbc4; }
-        .memory-image { width: 100%; max-width: 400px; height: auto; border-radius: 10px; margin: 20px auto; border: 4px solid #00796b; box-shadow: 0 0 15px rgba(0, 121, 107, 0.5); }
-        .star { position: absolute; color: #ffd700; font-size: 20px; animation: floatUp 5s infinite ease-out; opacity: 0; pointer-events: none; }
-        @keyframes floatUp { 0% { transform: translateY(0) scale(1); opacity: 1; } 100% { transform: translateY(-500px) scale(0.5); opacity: 0; } }
-        #manual-play-button { background-color: #004d40; margin-bottom: 20px; }
+        /* تم تثبيت الألوان المناسبة للاحتفال (ذهبي/أبيض/أزرق) */
+        body { 
+            font-family: 'Arial', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #fff8e1; /* Off-White/Cream */
+            color: #424242; /* Dark Gray */
+            text-align: center; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+        }
+        .page { 
+            width: 100%; 
+            max-width: 600px; 
+            padding: 20px; 
+            box-sizing: border-box; 
+        }
+
+        /* صفحة الباسورد */
+        #password-page { 
+            background: #fff; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+        }
+        input[type="text"] { 
+            padding: 12px; 
+            margin: 15px 0; 
+            border: 2px solid #ffb300; /* Gold/Yellow Border */
+            border-radius: 8px; 
+            width: 80%; 
+            font-size: 1.1em;
+        }
+        button { 
+            background-color: #ffb300; /* Gold Button */
+            color: white; 
+            padding: 12px 25px; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-size: 1.1em; 
+            transition: background-color 0.3s; 
+        }
+        button:hover { 
+            background-color: #ff8f00; 
+        }
+
+        /* صفحة المفاجأة */
+        #surprise-page { 
+            display: none; 
+        }
+        h1 { 
+            color: #d84315; /* Reddish Orange for celebration */
+            margin-bottom: 10px; 
+            font-size: 2.2em;
+        }
+        .message-box { 
+            background: #ffe0b2; /* Light Orange/Peach Background */
+            padding: 25px; 
+            border-radius: 10px; 
+            margin-top: 20px; 
+            font-size: 1.3em; 
+            line-height: 1.6; 
+            white-space: pre-line;
+            border: 3px solid #ffb300; /* Gold Border */
+        }
+        .memory-image { 
+            width: 100%; 
+            max-width: 450px; 
+            height: auto; 
+            border-radius: 10px; 
+            margin: 25px auto; 
+            border: 5px solid #ffb300; 
+            box-shadow: 0 0 20px rgba(255, 179, 0, 0.7); 
+        }
+        
+        /* أنيميشن بالونات/شموع عيد ميلاد */
+        .star { 
+            position: absolute; 
+            color: #fdd835; /* Gold/Yellow */
+            font-size: 24px; 
+            animation: floatUp 6s infinite ease-out; 
+            opacity: 0; 
+            pointer-events: none; 
+        }
+        @keyframes floatUp { 
+            0% { transform: translateY(0) scale(1); opacity: 1; } 
+            100% { transform: translateY(-600px) scale(0.6); opacity: 0; } 
+        }
+        #manual-play-button { 
+            background-color: #d84315; /* لون تشغيل مميز */
+            margin-bottom: 20px; 
+        }
 
         /* إخفاء مشغل يوتيوب في وضع عدم التشغيل */
         #youtube-player { display: none; } 
@@ -34,31 +114,32 @@
 
 
     <div id="password-page" class="page">
-        <h2>عشان تشوف المفاجأة يا أسامة، لازم تكتب كلمة السر!</h2>
-        <input type="text" id="password" placeholder="أكتب كلمة السر الخاصة بينا..." required>
-        <button onclick="checkPassword()">ادخل هنا</button>
+        <h2>يا حُسام، عشان تشوف المفاجأة لازم تكتب كلمة السر!</h2>
+        <input type="text" id="password" placeholder="كلمة سر عيد ميلادك..." required>
+        <button onclick="checkPassword()">افتح هديتك</button>
     </div>
 
     <div id="surprise-page" class="page">
-        <h1>صاحب العمر والسند ⭐</h1>
+        <h1>كل سنة وأنت طيب يا حُسام! 🥳</h1>
         
-        <button id="manual-play-button" onclick="playMusic()">شغل الأغنية</button> 
+        <button id="manual-play-button" onclick="playMusic()">شغل أغنية عيد الميلاد</button> 
         
         <div class="message-box">
-            <p>يا أخوياا اس اس اللي مفيش منه اتنين، وأجدع أخ وسند في الدنيا دي كلها. أنت مش بس صاحب، أنت العيلة والضهر، وعشرة سنين عمري ما أنساها. أنت ليك مكان خاص في قلبي محدش يقدر ياخده، مكان محفور فيه كل ذكرى حلوة ووقفة جدعنة. ربنا يديمك نعمة، ويديم المحبة اللي بين أنا وأنت طول العمر يا أصيل.</p>
+            <p>كل سنه وانت طيب يا Hoss! ❤️ أنت الأخ والسند والضهر. كل سنة وأنت أغلى وأجدع، وربنا يديم المحبة والجدعنة بينا طول العمر.</p>
         </div>
 
-        <h3>صورة بتفكرنا بأحلى الأيام!</h3>
+        <h3>لحظة حلوة بتفكرنا بيك!</h3>
         
-        <img class="memory-image" src="https://i.postimg.cc/W30fTzYg/Snapchat-1152035151.jpg" alt="صورة ذكرى">
+        <img class="memory-image" src="https://i.postimg.cc/KYZCXZZH/IMG-1348.jpg" alt="صورة ذكرى">
         
-        <p>تدوم الأخوة والجدعنة بينا 💚</p>
+        <p>عقبال مليون سنة سعادة 🎁</p>
     </div>
     
     <script>
-        const CORRECT_PASSWORD = "AKHOYA"; 
+        // ** كلمة السر المضمونة **
+        const CORRECT_PASSWORD = "AKHOYA HOSS"; 
         
-        // دالة تشغيل الأغنية (هتشتغل لما يدوس على زر التشغيل اليدوي)
+        // دالة تشغيل الأغنية (ستفتح رابط اليوتيوب وتفك كتم الصوت)
         function playMusic() {
             const player = document.getElementById('youtube-player');
             // تغيير مصدر الفيديو لإضافة خاصية "فك كتم الصوت" وضمان التشغيل بعد تفاعل المستخدم
@@ -75,25 +156,28 @@
                 document.getElementById('password-page').style.display = 'none';
                 document.getElementById('surprise-page').style.display = 'block';
                 
-                // في هذه المرة لن يتم استدعاء playMusic هنا، بل سيتم تركها للزر اليدوي
                 startStarAnimation(); 
             } else {
-                alert('كلمة السر غلط يا أسامة، ركز شوية!');
+                alert('كلمة السر غلط يا حُسام، حاول تاني!');
             }
         }
 
+        // دالة حركة البالونات/النجوم
         function startStarAnimation() {
             const container = document.body;
+            const symbols = ['🎂', '🎁', '🎈', '🎉', '⭐'];
+            
             setInterval(() => {
                 const star = document.createElement('div');
                 star.classList.add('star');
-                star.innerHTML = '⭐'; 
+                // اختيار رمز عشوائي للاحتفال
+                star.innerHTML = symbols[Math.floor(Math.random() * symbols.length)]; 
                 star.style.left = Math.random() * 100 + 'vw'; 
-                star.style.animationDuration = Math.random() * 3 + 4 + 's'; 
+                star.style.animationDuration = Math.random() * 3 + 6 + 's'; // أبطأ قليلاً لتبدو كبالونات
                 container.appendChild(star);
-                setTimeout(() => star.remove(), 5000); 
+                setTimeout(() => star.remove(), 6000); 
             }, 300); 
         }
     </script>
 </body>
-</html>
+</html> 
