@@ -1,183 +1,103 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عيد ميلاد أغلى أخ (حُسام) 🎂</title>
-    <style>
-        /* تم تثبيت الألوان المناسبة للاحتفال (ذهبي/أبيض/أزرق) */
-        body { 
-            font-family: 'Arial', sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background-color: #fff8e1; /* Off-White/Cream */
-            color: #424242; /* Dark Gray */
-            text-align: center; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-        }
-        .page { 
-            width: 100%; 
-            max-width: 600px; 
-            padding: 20px; 
-            box-sizing: border-box; 
-        }
-
-        /* صفحة الباسورد */
-        #password-page { 
-            background: #fff; 
-            border-radius: 15px; 
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
-        }
-        input[type="text"] { 
-            padding: 12px; 
-            margin: 15px 0; 
-            border: 2px solid #ffb300; /* Gold/Yellow Border */
-            border-radius: 8px; 
-            width: 80%; 
-            font-size: 1.1em;
-        }
-        button { 
-            background-color: #ffb300; /* Gold Button */
-            color: white; 
-            padding: 12px 25px; 
-            border: none; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            font-size: 1.1em; 
-            transition: background-color 0.3s; 
-        }
-        button:hover { 
-            background-color: #ff8f00; 
-        }
-
-        /* صفحة المفاجأة */
-        #surprise-page { 
-            display: none; 
-        }
-        h1 { 
-            color: #d84315; /* Reddish Orange for celebration */
-            margin-bottom: 10px; 
-            font-size: 2.2em;
-        }
-        .message-box { 
-            background: #ffe0b2; /* Light Orange/Peach Background */
-            padding: 25px; 
-            border-radius: 10px; 
-            margin-top: 20px; 
-            font-size: 1.3em; 
-            line-height: 1.6; 
-            white-space: pre-line;
-            border: 3px solid #ffb300; /* Gold Border */
-        }
-        .memory-image { 
-            width: 100%; 
-            max-width: 450px; 
-            height: auto; 
-            border-radius: 10px; 
-            margin: 25px auto; 
-            border: 5px solid #ffb300; 
-            box-shadow: 0 0 20px rgba(255, 179, 0, 0.7); 
-        }
-        
-        /* أنيميشن بالونات/شموع عيد ميلاد */
-        .star { 
-            position: absolute; 
-            color: #fdd835; /* Gold/Yellow */
-            font-size: 24px; 
-            animation: floatUp 6s infinite ease-out; 
-            opacity: 0; 
-            pointer-events: none; 
-        }
-        @keyframes floatUp { 
-            0% { transform: translateY(0) scale(1); opacity: 1; } 
-            100% { transform: translateY(-600px) scale(0.6); opacity: 0; } 
-        }
-        #manual-play-button { 
-            background-color: #d84315; /* لون تشغيل مميز */
-            margin-bottom: 20px; 
-        }
-
-        /* إخفاء مشغل يوتيوب في وضع عدم التشغيل */
-        #youtube-player { display: none; } 
-    </style>
+<meta charset="UTF-8">
+<title>خطوات قلبي 🤍</title>
+<style>
+body{
+  background:white;
+  text-align:center;
+  font-family:Arial;
+  margin:0;
+}
+#game{
+  width:100%;
+  height:300px;
+  border-top:2px solid black;
+  border-bottom:2px solid black;
+  position:relative;
+  overflow:hidden;
+}
+#player{
+  width:30px;
+  height:30px;
+  background:black;
+  position:absolute;
+  bottom:20px;
+  left:10px;
+}
+#text{
+  margin-top:20px;
+  font-size:20px;
+  color:black;
+}
+img{
+  width:80px;
+  margin-top:10px;
+}
+button{
+  margin-top:20px;
+  padding:10px 25px;
+  font-size:18px;
+}
+</style>
 </head>
+
 <body>
 
-    <iframe id="youtube-player" 
-            width="0" height="0" 
-            src="https://www.youtube.com/embed/onMMJ9mhtVA?autoplay=1&mute=1&loop=1&playlist=onMMJ9mhtVA" 
-            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-    </iframe>
+<h2>خطوات قلبي 🤍</h2>
 
+<div id="game">
+  <div id="player"></div>
+</div>
 
-    <div id="password-page" class="page">
-        <h2>يا حُسام، عشان تشوف المفاجأة لازم تكتب كلمة السر!</h2>
-        <input type="text" id="password" placeholder="كلمة سر عيد ميلادك..." required>
-        <button onclick="checkPassword()">افتح هديتك</button>
-    </div>
+<div id="text">امشي في الممر…</div>
+<img id="img" src="" style="display:none">
 
-    <div id="surprise-page" class="page">
-        <h1>كل سنة وأنت طيب يا حُسام! 🥳</h1>
-        
-        <button id="manual-play-button" onclick="playMusic()">شغل أغنية عيد الميلاد</button> 
-        
-        <div class="message-box">
-            <p>كل سنه وانت طيب يا Hoss! ❤️ أنت الأخ والسند والضهر. كل سنة وأنت أغلى وأجدع، وربنا يديم المحبة والجدعنة بينا طول العمر.</p>
-        </div>
+<button onclick="move()">كمّل</button>
 
-        <h3>لحظة حلوة بتفكرنا بيك!</h3>
-        
-        <img class="memory-image" src="https://i.postimg.cc/KYZCXZZH/IMG-1348.jpg" alt="صورة ذكرى">
-        
-        <p>عقبال مليون سنة سعادة 🎁</p>
-    </div>
-    
-    <script>
-        // ** كلمة السر المضمونة **
-        const CORRECT_PASSWORD = "AKHOYA HOSS"; 
-        
-        // دالة تشغيل الأغنية (ستفتح رابط اليوتيوب وتفك كتم الصوت)
-        function playMusic() {
-            const player = document.getElementById('youtube-player');
-            // تغيير مصدر الفيديو لإضافة خاصية "فك كتم الصوت" وضمان التشغيل بعد تفاعل المستخدم
-            player.src = "https://www.youtube.com/embed/onMMJ9mhtVA?autoplay=1&mute=0&loop=1&playlist=onMMJ9mhtVA";
-            
-            // إخفاء الزر بعد الضغط عليه
-            document.getElementById('manual-play-button').style.display = 'none';
-        }
-        
-        function checkPassword() {
-            const passwordInput = document.getElementById('password').value.toUpperCase(); 
-            
-            if (passwordInput === CORRECT_PASSWORD) {
-                document.getElementById('password-page').style.display = 'none';
-                document.getElementById('surprise-page').style.display = 'block';
-                
-                startStarAnimation(); 
-            } else {
-                alert('كلمة السر غلط يا حُسام، حاول تاني!');
-            }
-        }
+<!-- موسيقى هادئة -->
+<audio id="music" autoplay loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
 
-        // دالة حركة البالونات/النجوم
-        function startStarAnimation() {
-            const container = document.body;
-            const symbols = ['🎂', '🎁', '🎈', '🎉', '⭐'];
-            
-            setInterval(() => {
-                const star = document.createElement('div');
-                star.classList.add('star');
-                // اختيار رمز عشوائي للاحتفال
-                star.innerHTML = symbols[Math.floor(Math.random() * symbols.length)]; 
-                star.style.left = Math.random() * 100 + 'vw'; 
-                star.style.animationDuration = Math.random() * 3 + 6 + 's'; // أبطأ قليلاً لتبدو كبالونات
-                container.appendChild(star);
-                setTimeout(() => star.remove(), 6000); 
-            }, 300); 
-        }
-    </script>
+<script>
+let step = 0;
+let player = document.getElementById("player");
+let text = document.getElementById("text");
+let img = document.getElementById("img");
+
+let messages = [
+  "كل خطوة أفكر فيك 🤍",
+  "الفراغ حواليّ بيزود شوقي ليك",
+  "نفسي أقدر أوصفلك شعوري… بس الكلمات قليلة",
+  "كل ضحكة منك كانت بتنور قلبي",
+  "لو كنت هنا… كان الطريق أسهل",
+  "أفتقد كل لحظة معاك… حتى اللي ضاعت",
+  "قلبي متعلق بيك أكتر من أي وقت",
+  "أحيانًا الحنين بيكون أقوى من كل حاجة",
+  "كنت نفسي المسافة تكون أقل",
+  "أيامي من غيرك بتمشي ببطء رهيب",
+  "نفسي أسمع صوتك دلوقتي",
+  "كل خطوة في الممر بتفكرني بيك",
+  "بحس كل خطوة أقرب ليك… وأبعد عنك في نفس الوقت",
+  "لما تبعد، الدنيا تصغر… وأنا كبير بالحنين",
+  "ووسط كل ده… لسه بحبك"
+];
+
+function move(){
+  if(step < messages.length){
+    player.style.left = (step * 40) + "px";
+    text.innerHTML = messages[step];
+    img.style.display = "block";
+    img.src = "https://upload.wikimedia.org/wikipedia/commons/4/42/Love_Heart_SVG.svg";
+    step++;
+  }
+  if(step == messages.length){
+    text.innerHTML += "<br><b>— من قلبي ليك 🤍</b>";
+  }
+}
+</script>
+
 </body>
-</html> 
+</html>
